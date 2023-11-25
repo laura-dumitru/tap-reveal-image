@@ -1,14 +1,10 @@
 let options = {
   stickyImage: false, // follows the user's finger
   staticImage: true, //stops on the screen when the user lets go, doesn't follow finger.
-  hideImage: false, // shows the image after the finger leaves the hotspot. If sticky, this option should stay true.
+  hideImage: true, // shows the image after the finger leaves the hotspot. If sticky, this option should stay true.
   transition: "0.5s", //duration in seconds that it takes for the change from one image to another.
   offsetX: 80, // horizontal offset - value in pixels.It determines how far to the left or right of your thumb the image will appear.
   offsetY: 60, //vertical offset - value in pixels. It determines how far above or below your thumb the image will appear.
-  goToPage: "Page2", // match the name of the page layer it transitions to.
-  fadeDuration: 750, // the time (in ms) it takes for page1 to transition to page2.
-  animationType: "slide", // can be fade, slide or none.
-  direction: "south", // can be north, south, east or west.
 };
 
 const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
@@ -27,43 +23,56 @@ const ctaGroup = document.querySelector(".cta");
 function hideImages() {
   images.forEach((image) => (image.style.opacity = 0));
 }
-//hideImages();
+hideImages();
+
+function showImages() {
+  images.forEach((image) => (image.style.opacity = 1));
+}
 
 function followFinger(event) {
   event.preventDefault();
-  x = event.clientX;
-  y = event.clientY;
+
+  if (mobile) {
+    x = event.touches[0].clientX;
+    y = event.touches[0].clientY;
+  } else {
+    x = event.clientX;
+    y = event.clientY;
+  }
 
   // Position the image to the centre
   function positionImage(image, x, y) {
     const xOffset = x - options.offsetX;
     const yOffset = y - options.offsetY;
+
     // Calculate the position relative to the container
     image.style.top = `calc(${yOffset}px - ${image.style.height} / 2)`;
     image.style.left = `calc(${xOffset}px - ${image.style.width}  / 2)`;
   }
 
-  if (moving) {
-    // FIXME figure out which hotspot/image the mouse is currently moving/within
-    //hotspots.forEach((hotspot) => {})
+  // Iterate over each hotspot to check if the finger is inside
+  hotspots.forEach(function (hotspot, index) {
+    const rect = hotspot.getBoundingClientRect();
+    const image = images[index];
+    if (
+      x >= rect.left &&
+      x <= rect.right &&
+      y >= rect.top &&
+      y <= rect.bottom
+    ) {
+      //console.log(`Finger is inside hotspot ${index}`);
+      image.style.opacity = 1;
+      image.style.transition = `opacity ${options.transition}`;
+    } else {
+      console.log(`Finger is outside hotspot${index}`);
+      image.style.opacity = 0;
+      image.style.transition = `opacity ${options.transition}`;
+    }
+  });
 
+  if (moving) {
     hotspot = hotspots[0];
     image = images[0];
-
-    // Assuming image is the current image being handled
-    image.style.transition = `opacity ${options.transition}`;
-
-    // Calculating whether the finger is inside the boundaries of the hotspot
-    const { left, right, top, bottom } = hotspot.getBoundingClientRect();
-    // FIXME getBoundingClientRect is a celtra API function
-
-    if (x >= left && x <= right && y >= top && y <= bottom) {
-      // If I am in the boundaries of the box, set the opacity of the image to 1
-      image.style.opacity = 0;
-    } else if (options.hideImage) {
-      // When the finger is no longer in the box, hide the image
-      image.style.opacity = 0;
-    }
 
     if (options.stickyImage) {
       positionImage(image, x, y); // options.transition
@@ -95,7 +104,6 @@ if (mobile) {
       // Keep the image at its original size (no scaling)
       image.style.transform = "scale(1)";
     });
-
     hideImages();
     images.forEach((image) => {
       if (options.stickyImage) {
