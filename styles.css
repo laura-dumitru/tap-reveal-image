@@ -20,13 +20,12 @@ h1 {
   display: grid;
   gap: 2em;
   padding: 2em;
-  padding-top: 160px;
   /* Use repeat and 1fr for two columns */
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 200px);
 }
 .grid img {
-  max-width: 100%;
+  max-width: 80%;
 }
 
 .grid .hotspot {
@@ -44,7 +43,10 @@ a {
   color: black;
 }
 
-.cta {
+.cta1,
+.cta2,
+.cta3,
+.cta4 {
   background: #fff5;
   position: absolute;
   bottom: 24px;
