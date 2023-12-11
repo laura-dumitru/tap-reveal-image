@@ -43,10 +43,7 @@ a {
   color: black;
 }
 
-.cta1,
-.cta2,
-.cta3,
-.cta4 {
+.cta {
   background: #fff5;
   position: absolute;
   bottom: 24px;

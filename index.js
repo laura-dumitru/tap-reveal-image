@@ -4,12 +4,14 @@ let options = {
   hideImage: true, // shows the image after the finger leaves the hotspot. If sticky, this option should stay true.
   transition: "0.5s", //duration in seconds that it takes for the change from one image to another.
   offsetX: 0, // horizontal offset - value in pixels.It determines how far to the left or right of your thumb the image will appear.
-  offsetY: 0, //vertical offset - value in pixels. It determines how far above or below your thumb the image will appear.
+  offsetY: 0, // vertical offset - value in pixels. It determines how far above or below your thumb the image will appear.
+  products: ["google.com", "instagram.com", "facebook.com", "youtube.com"],
 };
 
 const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
 const mobile = regex.test(navigator.userAgent);
 
+const cta = document.querySelector(".cta a");
 let moving = false;
 let x, y;
 let image;
@@ -88,7 +90,7 @@ function followFinger(event) {
 if (mobile) {
   document.addEventListener("touchmove", followFinger);
 
-  images.forEach((image) => {
+  images.forEach((image, index) => {
     image.addEventListener("touchstart", (event) => {
       moving = true;
       followFinger(event);
@@ -97,16 +99,18 @@ if (mobile) {
     image.addEventListener("touchend", (event) => {
       event.preventDefault();
       moving = false;
+      cta.href = `https://${options.products[index]}`;
     });
   });
 } else {
   // add mousemove (hover) event listener for desktop
   document.addEventListener("mousemove", followFinger);
 
-  images.forEach((image) => {
+  images.forEach((image, index) => {
     image.addEventListener("mousemove", (event) => {
       //console.log("mousemove");
       moving = true;
+      cta.href = `https://${options.products[index]}`;
       followFinger(event);
     });
   });
