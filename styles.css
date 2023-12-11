@@ -19,13 +19,13 @@ h1 {
 .grid {
   display: grid;
   gap: 2em;
-  padding: 2em;
+  padding: 4em;
   /* Use repeat and 1fr for two columns */
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 200px);
 }
 .grid img {
-  max-width: 80%;
+  max-width: 100%;
 }
 
 .grid .hotspot {
