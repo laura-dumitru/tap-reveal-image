@@ -30,12 +30,17 @@ h1 {
 
 .grid .hotspot {
   background-color: #fff5;
+  cursor: grabbing;
 }
 
 main,
 button,
 .hotspot {
   border-radius: 6px;
+}
+
+button {
+  cursor: pointer;
 }
 
 a {
