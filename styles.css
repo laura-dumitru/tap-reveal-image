@@ -23,6 +23,8 @@ h1 {
   /* Use repeat and 1fr for two columns */
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 200px);
+
+  transform-origin: top left;
 }
 .grid img {
   max-width: 100%;
@@ -39,6 +41,7 @@ button,
   border-radius: 6px;
 }
 
+/* FIXME: https://stackoverflow.com/a/2906586 */
 button {
   cursor: pointer;
 }
