@@ -1,7 +1,8 @@
 let options = {
+  //mode: "sticky", // or static
   stickyImage: false, // follows the user's finger
   staticImage: true, // stops on the screen when the user lets go, doesn't follow finger.
-  hideImage: true, // shows the image after the finger leaves the hotspot. If sticky, this option should stay true.
+  hideImage: false, // shows the image after the finger leaves the hotspot. If sticky, this option should stay true.
   transition: "0.5s", // duration in seconds that it takes for the change from one image to another.
   offsetX: 0, // horizontal offset - value in pixels.It determines how far to the left or right of your thumb the image will appear.
   offsetY: 0, // vertical offset - value in pixels. It determines how far above or below your thumb the image will appear.
@@ -26,49 +27,49 @@ function hideImages() {
 }
 hideImages();
 
+images.forEach((image) => (image.style.transition = `opacity ${options.transition}`));
+
+function repositionImage(image, x, y) {
+  // const hotspotRect = hotspot.getBoundingClientRect();
+  // Calculate the position relative to the hotspot
+  // const offsetX = options.offsetX;
+  // const offsetY = options.offsetY;
+  // Calculate the translation values to keep the image centered in the hotspot
+  // const xOffset = x - hotspotRect.left - offsetX;
+  // const yOffset = y - hotspotRect.top - offsetY;
+  //image.style.transform = `translate(${x - 400}px, ${y}px)`; //calc()
+}
+
 function followFinger(event) {
   event.preventDefault();
-  x = event.x; //clientX //layerX //movementX //offsetX //pageX //screenX
+  x = event.x; //layerX //clientX //movementX //offsetX //pageX //screenX
   y = event.y;
 
-  function positionImage(image, x, y) {
-    const hotspots = document.querySelectorAll(".hotspot");
+  // console.log(hotspots);
 
-    hotspots.forEach((hotspot) => {
-      const hotspotRect = hotspot.getBoundingClientRect();
+  // if (moving) {
+  // Iterate over each hotspot to check if the finger is inside
+  // const hotspot = hotspots.find() {
+  hotspots.forEach((hotspot, index) => {
+    //if inside rect true else false
+    const rect = hotspot.getBoundingClientRect();
+    // console.log(index);
+    //if (image) image.style.transition = `opacity ${options.transition}`;
 
-      // Calculate the position relative to the hotspot
-      const offsetX = options.offsetX;
-      const offsetY = options.offsetY;
-      // Calculate the translation values to keep the image centered in the hotspot
-      const xOffset = x - hotspotRect.left - offsetX;
-      const yOffset = y - hotspotRect.top - offsetY;
-      image.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    });
-  }
+    if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+      // if (options.staticImage || (options.stickyImage && !options.hideImage)) {
+      //image = images[index];
+      //image.style.opacity = 1;
+      // }
+      // console.log(`Finger is inside hotspot ${index}`);
+    } //else if (image && options.hideImage) image.style.opacity = 0;
+  });
 
-  if (moving) {
-    // Iterate over each hotspot to check if the finger is inside
-    // const hotspot = hotspots.find() {
-    hotspots.forEach(function (hotspot, index) {
-      //if inside rect true else false
-      const rect = hotspot.getBoundingClientRect();
-      const image = images[index];
-      image.style.transition = `opacity ${options.transition}`;
-
-      if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
-        image.style.opacity = 1;
-      } else {
-        if (options.hideImage) {
-          image.style.opacity = 0;
-        }
-        if (options.stickyImage) {
-          positionImage(image, x, y);
-        }
-      }
-    });
-  }
+  // if (options.stickyImage) repositionImage(image, x, y);
+  // }
 }
+
+let currentImage;
 
 // add touchstart and touchend event listeners for mobile
 if (mobile) {
@@ -87,14 +88,44 @@ if (mobile) {
     });
   });
 } else {
-  // add mousemove (hover) event listener for desktop
-  document.addEventListener("mousemove", followFinger);
-
   images.forEach((image, index) => {
-    image.addEventListener("mousemove", (event) => {
-      moving = true;
-      cta.href = `https://${options.products[index]}`;
-      followFinger(event);
+    image.addEventListener("mouseover", (event) => {
+      event.preventDefault();
+
+      currentImage = images[index];
+
+      // moving = true;
+      //cta.href = `https://${options.products[index]}`;
+      //followFinger(event);
+
+      image.style.opacity = 1;
     });
+
+    image.addEventListener("mouseout", (event) => {
+      event.preventDefault();
+      if (options.hideImage) image.style.opacity = 0;
+
+      if (currentImage) currentImage.style.transform = `translate(0, 0)`; //calc()
+
+      // moving = false;
+      cta.href = `https://${options.products[index]}`;
+      // console.log(cta.href);
+      //
+    });
+  });
+
+  // add mousemove (hover) event listener for desktop
+  document.addEventListener("mousemove", (event) => {
+    event.preventDefault();
+    //followFinger);
+
+    //x //layerX //clientX //movementX //offsetX //pageX //screenX
+    const x = event.clientX / 4 - 200;
+    const y = event.clientY / 2 - 200;
+
+    console.log(x, y);
+
+    if (currentImage) currentImage.style.transform = `translate(${x}px, ${y}px)`; //calc()
+    // image.style.transform = `translate(${x}px, ${y}px)`; //calc()
   });
 }
