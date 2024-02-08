@@ -54,8 +54,8 @@ a {
 .cta {
   background: white;
   position: absolute;
-  top: 75%;
-  left: 45%;
+  top: 78%;
+  left: 46%;
   border: 1px solid black;
   padding: 1em 3em;
   display: flex;
@@ -63,12 +63,17 @@ a {
   justify-content: center;
   margin: 0 auto;
 }
+
 .pointer {
   color: #222;
   position: absolute;
   left: 40%;
   top: 25%;
   stroke-width: 1.5px;
+}
+svg.lucide {
+  width: 32px;
+  height: 32px;
 }
 footer {
   display: flex;
