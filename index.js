@@ -8,6 +8,7 @@ let options = {
   offsetY: 0, // vertical offset - value in pixels. It determines how far above or below your thumb the image will appear.
   products: ["google.com", "instagram.com", "facebook.com", "youtube.com"],
 };
+lucide.createIcons();
 
 const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
 const mobile = regex.test(navigator.userAgent);
