@@ -64,10 +64,11 @@ a {
   margin: 0 auto;
 }
 .pointer {
-  color: white;
+  color: #222;
   position: absolute;
-  left: 49.5%;
-  top: 38%;
+  left: 40%;
+  top: 25%;
+  stroke-width: 1.5px;
 }
 footer {
   display: flex;
