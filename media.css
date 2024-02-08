@@ -1,0 +1,24 @@
+@media (max-width: 900px) {
+  h1 {
+    letter-spacing: normal;
+  }
+  main {
+    max-width: 100vw;
+    height: 75vh;
+  }
+  .grid {
+    gap: 1em;
+    padding: 2em;
+  }
+  .cta {
+    top: 83%;
+    left: 30%;
+    padding: 1em 3em;
+  }
+
+  footer svg.lucide {
+    width: 2.5em;
+    height: 2.5em;
+    margin-left: 0.5em;
+  }
+}
