@@ -1,20 +1,26 @@
 body {
+  font-family: "Montserrat", sans-serif;
   background-color: #222;
 }
 main {
   background-image: url("/images/img.jpg");
   max-width: 600px;
-  height: 90vh;
+  height: 75vh;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0 auto;
 }
 
+h1,
+.cta {
+  letter-spacing: 0.05em;
+}
+
 h1 {
-  font-family: "Yeseva One", serif;
   color: white;
   text-align: center;
-  margin-bottom: 24px;
+  font-weight: 400;
+  margin: 1em;
 }
 .grid {
   display: grid;
@@ -23,7 +29,6 @@ h1 {
   /* Use repeat and 1fr for two columns */
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 200px);
-
   transform-origin: top left;
 }
 .grid img {
@@ -35,14 +40,9 @@ h1 {
   cursor: grabbing;
 }
 
-main,
-button,
-.hotspot {
-  border-radius: 6px;
-}
-
 /* FIXME: https://stackoverflow.com/a/2906586 */
 button {
+  font-family: "Montserrat", sans-serif;
   cursor: pointer;
 }
 
@@ -52,15 +52,35 @@ a {
 }
 
 .cta {
-  background: #fff5;
+  background: white;
   position: absolute;
-  bottom: 24px;
+  top: 75%;
   left: 45%;
   border: 1px solid black;
-  padding: 12px;
-  width: 140px;
+  padding: 1em 3em;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+}
+footer {
+  display: flex;
+  justify-content: center;
+}
+footer svg {
+  transition: color 0.5s ease-in-out;
+}
+footer svg.lucide {
+  color: white;
+  margin-top: 4em;
+  margin-left: 1em;
+  width: 3em;
+  height: 3em;
+  stroke-width: 1.5px;
+}
+footer svg.lucide:hover {
+  color: #fff5;
+}
+footer a {
+  text-decoration: none;
 }
