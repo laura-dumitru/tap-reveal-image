@@ -36,7 +36,7 @@ h1 {
 }
 
 .grid .hotspot {
-  background-color: #fff5;
+  background-color: #fff2;
   cursor: grabbing;
 }
 
@@ -63,6 +63,12 @@ a {
   justify-content: center;
   margin: 0 auto;
 }
+.pointer {
+  color: white;
+  position: absolute;
+  left: 49.5%;
+  top: 38%;
+}
 footer {
   display: flex;
   justify-content: center;
@@ -79,7 +85,7 @@ footer svg.lucide {
   stroke-width: 1.5px;
 }
 footer svg.lucide:hover {
-  color: #fff5;
+  color: #fff2;
 }
 footer a {
   text-decoration: none;
