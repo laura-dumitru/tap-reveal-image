@@ -16,11 +16,41 @@ const mobile = regex.test(navigator.userAgent);
 const hotspots = Array.from(document.querySelectorAll(".grid .hotspot"));
 const images = Array.from(document.querySelectorAll(".grid img"));
 const cta = document.querySelector(".cta a");
+const pointer = document.querySelector(".pointer");
 
 // let lastTouchedCta = options.products[0];
 let moving = false;
 let x, y;
 let image;
+
+function animate() {
+  const timeline = gsap.timeline();
+  timeline.to(pointer, {
+    x: "300px",
+    duration: 1,
+    ease: "power1.inOut",
+  });
+
+  timeline.to(pointer, {
+    y: "250px",
+    x: "0px",
+    duration: 1,
+    ease: "power1.inOut",
+  });
+  timeline.to(pointer, {
+    x: "300px",
+    duration: 1,
+    ease: "power1.inOut",
+  });
+  timeline.to(pointer, {
+    opacity: 0,
+    duration: 2, // Adjust duration as needed
+    onComplete: function () {
+      pointer.style.display = "none"; // Hide the pointer when animation ends
+    },
+  });
+}
+animate();
 
 // Loop over images and hide each one with opacity 0
 function hideImages() {
