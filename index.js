@@ -26,19 +26,19 @@ let image;
 function animate() {
   const timeline = gsap.timeline();
   timeline.to(pointer, {
-    x: "300px",
+    x: "16vw",
     duration: 1,
     ease: "power1.inOut",
   });
 
   timeline.to(pointer, {
-    y: "250px",
+    y: "25vh",
     x: "0px",
     duration: 1,
     ease: "power1.inOut",
   });
   timeline.to(pointer, {
-    x: "300px",
+    x: "16vw",
     duration: 1,
     ease: "power1.inOut",
   });
