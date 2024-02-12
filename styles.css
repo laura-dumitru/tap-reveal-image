@@ -3,7 +3,7 @@ body {
   background-color: #f5b793;
 }
 main {
-  background-image: url("/images/img.jpg");
+  background-image: url("images/img.jpg");
   max-width: 600px;
   height: 75vh;
   background-repeat: no-repeat;
@@ -17,7 +17,7 @@ h1,
 }
 
 h1 {
-  color: #443627;
+  color: #4b332e;
   text-align: center;
   font-weight: 500;
   margin: 1.2em;
@@ -47,7 +47,7 @@ button {
 
 a {
   text-decoration: none;
-  color: #443627;
+  color: #4b332e;
 }
 
 .cta {
@@ -55,7 +55,7 @@ a {
   position: absolute;
   top: 78%;
   left: 46%;
-  border: 1px solid #443627;
+  border: 1px solid #4b332e;
   padding: 1em 3em;
   display: flex;
   align-items: center;
@@ -64,7 +64,7 @@ a {
 }
 
 .pointer {
-  color: #443627;
+  color: #4b332e;
   position: absolute;
   left: 40%;
   top: 25%;
@@ -82,7 +82,7 @@ footer svg {
   transition: color 0.5s ease-in-out;
 }
 footer svg.lucide {
-  color: #443627;
+  color: #4b332e;
   margin-top: 4em;
   margin-left: 1em;
   width: 3em;
@@ -90,7 +90,7 @@ footer svg.lucide {
   stroke-width: 1.3px;
 }
 footer svg.lucide:hover {
-  color: #ffffea;
+  color: #aa6443;
 }
 footer a {
   text-decoration: none;
