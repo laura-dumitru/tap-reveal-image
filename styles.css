@@ -1,6 +1,6 @@
 body {
   font-family: "Montserrat", sans-serif;
-  background-color: #222;
+  background-color: #f5b793;
 }
 main {
   background-image: url("/images/img.jpg");
@@ -13,20 +13,19 @@ main {
 
 h1,
 .cta {
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
 }
 
 h1 {
-  color: white;
+  color: #443627;
   text-align: center;
-  font-weight: 400;
-  margin: 1em;
+  font-weight: 500;
+  margin: 1.2em;
 }
 .grid {
   display: grid;
   gap: 2em;
   padding: 4em;
-  /* Use repeat and 1fr for two columns */
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 200px);
   transform-origin: top left;
@@ -37,26 +36,26 @@ h1 {
 
 .grid .hotspot {
   background-color: #fff2;
-  cursor: grabbing;
+  cursor: pointer;
 }
 
-/* FIXME: https://stackoverflow.com/a/2906586 */
 button {
   font-family: "Montserrat", sans-serif;
+  font-weight: 600;
   cursor: pointer;
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: #443627;
 }
 
 .cta {
-  background: white;
+  background: #ffffea;
   position: absolute;
   top: 78%;
   left: 46%;
-  border: 1px solid black;
+  border: 1px solid #443627;
   padding: 1em 3em;
   display: flex;
   align-items: center;
@@ -65,15 +64,15 @@ a {
 }
 
 .pointer {
-  color: #222;
+  color: #443627;
   position: absolute;
   left: 40%;
   top: 25%;
-  stroke-width: 1.5px;
+  stroke-width: 1px;
 }
 svg.lucide {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
 }
 footer {
   display: flex;
@@ -83,15 +82,15 @@ footer svg {
   transition: color 0.5s ease-in-out;
 }
 footer svg.lucide {
-  color: white;
+  color: #443627;
   margin-top: 4em;
   margin-left: 1em;
   width: 3em;
   height: 3em;
-  stroke-width: 1.5px;
+  stroke-width: 1.3px;
 }
 footer svg.lucide:hover {
-  color: #fff2;
+  color: #ffffea;
 }
 footer a {
   text-decoration: none;
