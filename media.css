@@ -1,24 +1,34 @@
 @media (max-width: 900px) {
-  h1 {
+  h1,
+  .cta {
     letter-spacing: normal;
   }
+  body {
+    margin: 0;
+    background-color: transparent;
+  }
+  h1,
+  footer {
+    display: none;
+  }
   main {
-    max-width: 100vw;
-    height: 75vh;
-  }
-  .grid {
-    gap: 1em;
-    padding: 2em;
-  }
-  .cta {
-    top: 83%;
-    left: 30%;
-    padding: 1em 3em;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
   }
 
-  footer svg.lucide {
-    width: 2.5em;
-    height: 2.5em;
-    margin-left: 0.5em;
+  .grid {
+    gap: 1em;
+    padding: 1em;
+    margin-top: 2em;
+  }
+  .grid .hotspot {
+    margin-top: 2em;
+  }
+
+  .cta {
+    top: 90%;
+    left: 33%;
+    padding: 1em 3em;
   }
 }
