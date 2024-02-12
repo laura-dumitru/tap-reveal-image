@@ -18,6 +18,7 @@ const pointer = document.querySelector(".pointer");
 
 let x, y;
 let currentImage;
+let animationComplete = false;
 
 function animate() {
   const timeline = gsap.timeline();
@@ -43,10 +44,12 @@ function animate() {
     duration: 2, // Adjust duration as needed
     onComplete: function () {
       pointer.style.display = "none"; // Hide the pointer when animation ends
+      animationComplete = true;
     },
   });
 }
 animate();
+//if mobile animation should be different
 
 // Loop over images and hide each one with opacity 0
 images.forEach((image) => {
@@ -59,7 +62,7 @@ function followFinger(event) {
 
   x = event.clientX; // Use clientX for mouse event or event.touches[0].clientX for touch event
   y = event.clientY; // Use clientY for mouse event or event.touches[0].clientY for touch event
-
+  if (!animationComplete) return;
   //.clientX //.layerX //.offsetX //.pageX //.screenX //.x
 
   /*
