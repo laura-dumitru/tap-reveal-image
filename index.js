@@ -28,7 +28,7 @@ function animate() {
     });
 
     timeline.to(pointer, {
-      y: "30vh",
+      y: "25vh",
       x: "-20vw",
       duration: 1,
       ease: "power1.inOut",
