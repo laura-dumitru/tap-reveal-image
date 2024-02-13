@@ -1,11 +1,8 @@
 let options = {
-  //mode: "sticky", // or static
   stickyImage: true, // follows the user's finger
   staticImage: false, // stops on the screen when the user lets go, doesn't follow finger.
   hideImage: false, // shows the image after the finger leaves the hotspot. If sticky, this option should stay true.
   transition: "0.5s", // duration in seconds that it takes for the change from one image to another.
-  offsetX: 0, // horizontal offset - value in pixels.It determines how far to the left or right of your thumb the image will appear.
-  offsetY: 0, // vertical offset - value in pixels. It determines how far above or below your thumb the image will appear.
   products: ["google.com", "instagram.com", "facebook.com", "youtube.com"],
 };
 
@@ -22,31 +19,60 @@ let animationComplete = false;
 
 function animate() {
   const timeline = gsap.timeline();
-  timeline.to(pointer, {
-    x: "16vw",
-    duration: 1,
-    ease: "power1.inOut",
-  });
 
-  timeline.to(pointer, {
-    y: "25vh",
-    x: "0px",
-    duration: 1,
-    ease: "power1.inOut",
-  });
-  timeline.to(pointer, {
-    x: "16vw",
-    duration: 1,
-    ease: "power1.inOut",
-  });
-  timeline.to(pointer, {
-    opacity: 0,
-    duration: 2, // Adjust duration as needed
-    onComplete: function () {
-      pointer.style.display = "none"; // Hide the pointer when animation ends
-      animationComplete = true;
-    },
-  });
+  if (window.innerWidth < 600) {
+    timeline.to(pointer, {
+      x: "40vw",
+      duration: 1,
+      ease: "power1.inOut",
+    });
+
+    timeline.to(pointer, {
+      y: "30vh",
+      x: "-20vw",
+      duration: 1,
+      ease: "power1.inOut",
+    });
+    timeline.to(pointer, {
+      x: "40vw",
+      duration: 1,
+      ease: "power1.inOut",
+    });
+    timeline.to(pointer, {
+      opacity: 0,
+      duration: 2,
+      onComplete: function () {
+        pointer.style.display = "none";
+        animationComplete = true;
+      },
+    });
+  } else {
+    timeline.to(pointer, {
+      x: "16vw",
+      duration: 1,
+      ease: "power1.inOut",
+    });
+
+    timeline.to(pointer, {
+      y: "25vh",
+      x: "0px",
+      duration: 1,
+      ease: "power1.inOut",
+    });
+    timeline.to(pointer, {
+      x: "16vw",
+      duration: 1,
+      ease: "power1.inOut",
+    });
+    timeline.to(pointer, {
+      opacity: 0,
+      duration: 2,
+      onComplete: function () {
+        pointer.style.display = "none";
+        animationComplete = true;
+      },
+    });
+  }
 }
 animate();
 //if mobile animation should be different
