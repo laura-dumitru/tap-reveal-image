@@ -8,6 +8,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   background-color: var(--backgroundColor);
+  touch-action: none;
 }
 main {
   background-image: url("images/img.jpg");
@@ -42,19 +43,22 @@ h1 {
 }
 
 .grid .hotspot {
-  background-color: #fff2;
+  background-color: rgba(255, 255, 242, 0.1);
   cursor: pointer;
 }
 
 button {
   font-family: "Montserrat", sans-serif;
-  font-weight: 600;
   cursor: pointer;
 }
 
 a {
   text-decoration: none;
   color: var(--textColor);
+  font-size: 1.2em;
+}
+a {
+  font-weight: normal;
 }
 
 .cta {
@@ -64,9 +68,6 @@ a {
   left: 46%;
   border: 1px solid var(--textColor);
   padding: 1em 3em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin: 0 auto;
 }
 
@@ -91,9 +92,10 @@ footer svg {
 footer svg.lucide {
   color: var(--textColor);
   margin-top: 4em;
-  margin-left: 1em;
-  width: 3em;
-  height: 3em;
+  margin-left: 0.7em;
+  margin-bottom: 1em;
+  width: 2.5em;
+  height: 2.5em;
   stroke-width: 1.3px;
 }
 footer svg.lucide:hover {
