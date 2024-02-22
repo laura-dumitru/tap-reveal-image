@@ -75,7 +75,7 @@ a {
   color: var(--textColor);
   position: absolute;
   left: 40%;
-  top: 25%;
+  top: 33%;
   stroke-width: 1px;
 }
 svg.lucide {
