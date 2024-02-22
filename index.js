@@ -21,15 +21,15 @@ function animate() {
   const timeline = gsap.timeline();
 
   if (window.innerWidth < 600) {
+    // Mobile/tablet
     timeline.to(pointer, {
       x: "40vw",
       duration: 1,
       ease: "power1.inOut",
     });
-
     timeline.to(pointer, {
-      y: "25vh",
       x: "-20vw",
+      y: "25vh",
       duration: 1,
       ease: "power1.inOut",
     });
@@ -47,15 +47,15 @@ function animate() {
       },
     });
   } else {
+    // Desktop
     timeline.to(pointer, {
       x: "16vw",
       duration: 1,
       ease: "power1.inOut",
     });
-
     timeline.to(pointer, {
+      x: 0,
       y: "25vh",
-      x: "0px",
       duration: 1,
       ease: "power1.inOut",
     });
