@@ -22,6 +22,6 @@ git clone https://laura-dumitru.github.io/tap-reveal-image/
 
 Since this is an example project I would encourage you to clone and rename it so that you can use it for your own purposes.
 
-## Employers only
+## Employers
 
 You can see the original code I built while working at Mobkoi here: [Link to my gist](https://gist.github.com/laura-dumitru/6a2638c4976ebb40e225a84a32c423cf)
