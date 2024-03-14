@@ -16,6 +16,12 @@ On mobile drag your finger across the grid to reveal an image.
 
 ## Developer instructions
 
+```sh
 git clone https://laura-dumitru.github.io/tap-reveal-image/
+```
 
 Since this is an example project I would encourage you to clone and rename it so that you can use it for your own purposes.
+
+## Employers only
+
+You can see the original code I built while working at Mobkoi here: [Link to My Gist](https://github.com/laura-dumitru/tap-reveal-image)
